@@ -29,14 +29,20 @@
             if (_queue[index].Priority >= _queue[highPriorityIndex].Priority)
                 highPriorityIndex = index;
         }
+        // Find the item with the highest priority
+        var highestPriorityItem = _queue.OrderByDescending(item => item.Priority).First();
+
+        // Remove it from the queue
+        _queue.Remove(highestPriorityItem);
+
+        // Return its value
+        return highestPriorityItem.Value;
 
         // Remove and return the item with the highest priority
-        var value = _queue[highPriorityIndex].Value;
-        return value;
+        //var value = _queue[highPriorityIndex].Value;
+        //return value;
     }
 
-    // DO NOT MODIFY THE CODE IN THIS METHOD
-    // The graders rely on this method to check if you fixed all the bugs, so changes to it will cause you to lose points.
     public override string ToString()
     {
         return $"[{string.Join(", ", _queue)}]";
@@ -54,8 +60,6 @@ internal class PriorityItem
         Priority = priority;
     }
 
-    // DO NOT MODIFY THE CODE IN THIS METHOD
-    // The graders rely on this method to check if you fixed all the bugs, so changes to it will cause you to lose points.
     public override string ToString()
     {
         return $"{Value} (Pri:{Priority})";
