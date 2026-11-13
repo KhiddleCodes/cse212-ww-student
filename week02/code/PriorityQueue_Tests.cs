@@ -57,4 +57,22 @@ public class PriorityQueueTests
     }
 
     // Add more test cases as needed below.
+
+    [TestMethod]
+    // Scenario: Add three items with the same priority.
+    // Expected Result: Items should be dequeued in the same order they were added.
+    // Defect(s) Found: Record the actual result after running the test.
+    public void TestPriorityQueue_3()
+    {
+        var priorityQueue = new PriorityQueue();
+
+        priorityQueue.Enqueue("First", 5);
+        priorityQueue.Enqueue("Second", 5);
+        priorityQueue.Enqueue("Third", 5);
+
+        Assert.AreEqual("First", priorityQueue.Dequeue());
+        Assert.AreEqual("Second", priorityQueue.Dequeue());
+        Assert.AreEqual("Third", priorityQueue.Dequeue());
+    }
+
 }
